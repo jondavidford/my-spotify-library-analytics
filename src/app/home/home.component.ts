@@ -11,19 +11,19 @@ import { SpotifyApi } from '../models/spotify-api/index';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
-  private _topTracks: SpotifyApi.UsersTopTracksResponse | undefined = undefined;
+  topTracks$: Observable<SpotifyApi.UsersTopTracksResponse>;
 
-  constructor(private authService: AuthService, private spotifyService: SpotifyService) { }
-
-  ngOnInit(): void { }
-
-  user$: Observable<User> = this.authService.user$
-
-  getTopTracks(): void {
-    debugger;
-    this.spotifyService.getUserTopTracks().subscribe(next => this._topTracks = next);
+  constructor(private authService: AuthService, private spotifyService: SpotifyService) {
+    this.topTracks$ = this.spotifyService.getUserTopTracks();
+    this.authService.user$.subscribe(user => {
+      this.topTracks$ = this.spotifyService.getUserTopTracks();
+    })
   }
 
-  topTracks = this._topTracks;
+  ngOnInit(): void {
+
+  }
+
+  user$: Observable<User> = this.authService.user$
 
 }

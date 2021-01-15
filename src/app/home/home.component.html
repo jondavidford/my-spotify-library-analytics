@@ -2,6 +2,4 @@
 
 <p>{{ (user$ | async)?.token || 'test' }}</p>
 
-<button id="basic" type="button" mat-button (click)="getTopTracks()">Get Top Tracks</button>
-
-<p *ngFor="let track of topTracks?.items">{{ track.name }}</p>
+<p *ngFor="let track of (topTracks$ | async)?.items">{{ track.name }}</p>
