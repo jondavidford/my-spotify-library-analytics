@@ -8,6 +8,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
 
 import { MatButtonModule } from '@angular/material/button';
+import { MatToolbarModule } from '@angular/material/toolbar';
+
 import { LoginComponent } from './login/login.component';
 import { HomeComponent } from './home/home.component';
 import { SpotifyCallbackComponent } from './spotify-callback/spotify-callback.component';
@@ -26,7 +28,8 @@ import { httpInterceptorProviders } from './http-interceptors/index';
     AppRoutingModule,
     StoreModule.forRoot({}, {}),
     BrowserAnimationsModule,
-    MatButtonModule
+    MatButtonModule,
+    MatToolbarModule
   ],
   providers: [httpInterceptorProviders],
   bootstrap: [AppComponent]

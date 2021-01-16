@@ -1,9 +1,10 @@
-<nav>
-  <ul>
-    <li><a routerLink="/login" routerLinkActive="active">Login</a></li>
-    <li><a routerLink="/home" routerLinkActive="active">Home</a></li>
-  </ul>
-</nav>
+<mat-toolbar>
+  <span>My Spotify Library Analytics</span>
+  <span class="example-spacer"></span>
+  <a mat-button routerLink="/login" routerLinkActive="active">Login</a>
+  <a mat-button routerLink="/home" routerLinkActive="active">Home</a>
+</mat-toolbar>
 
-
-<router-outlet></router-outlet>
+<div class="container">
+  <router-outlet></router-outlet>
+</div>
