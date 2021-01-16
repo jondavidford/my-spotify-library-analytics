@@ -8,12 +8,25 @@ import { User } from './models/user';
 export class AuthService {
   private subject = new BehaviorSubject<User>({});
 
-  constructor() { }
+  constructor() {
+    const tokenFromStorage = localStorage.getItem('token');
+    if (tokenFromStorage != null) {
+      this.subject.next({
+        token: tokenFromStorage
+      });
+    }
+  }
 
   login(fragment: string): any {
     const params = new URLSearchParams(fragment);
+    const token = params.get('access_token');
+    
+    if (token != null) {
+      localStorage.setItem('token', token);
+    }
+    
     this.subject.next({
-      token: params.get('access_token') || undefined
+      token: token || undefined
     });
   }
 
