@@ -14,6 +14,7 @@ import { LoginComponent } from './login/login.component';
 import { HomeComponent } from './home/home.component';
 import { SpotifyCallbackComponent } from './spotify-callback/spotify-callback.component';
 import { httpInterceptorProviders } from './http-interceptors/index';
+import { UserTopTrackFeaturesComponent } from './user-top-track-features/user-top-track-features.component';
 
 @NgModule({
   declarations: [
@@ -21,6 +22,7 @@ import { httpInterceptorProviders } from './http-interceptors/index';
     LoginComponent,
     HomeComponent,
     SpotifyCallbackComponent,
+    UserTopTrackFeaturesComponent,
   ],
   imports: [
     BrowserModule,

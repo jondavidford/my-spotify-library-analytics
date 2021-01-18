@@ -1,3 +1,8 @@
 <p>home works!</p>
 
-<p *ngFor="let track of (topTracks$ | async)?.items">{{ track.name }}</p>
+<div *ngIf="(user$ | async) == undefined; else elseBlock">
+  <p>You need to login!</p>
+</div>
+<ng-template #elseBlock>
+  <app-user-top-track-features></app-user-top-track-features>
+</ng-template>

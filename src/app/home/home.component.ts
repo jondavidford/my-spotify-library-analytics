@@ -1,9 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { AuthService } from '../auth.service';
 import { User } from '../models/user';
-import { SpotifyService } from '../spotify.service';
-import { SpotifyApi } from '../models/spotify-api/index';
 
 @Component({
   selector: 'app-home',
@@ -11,18 +9,10 @@ import { SpotifyApi } from '../models/spotify-api/index';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
-  topTracks$: Observable<SpotifyApi.UsersTopTracksResponse> | undefined = undefined;
+  user$: Observable<User | undefined> = this.authService.user$;
 
-  constructor(private authService: AuthService, private spotifyService: SpotifyService) {
-    
+  constructor(private authService: AuthService) { }
+
+  ngOnInit(): void { 
   }
-
-  ngOnInit(): void {
-    this.authService.user$.subscribe(user => {
-      this.topTracks$ = this.spotifyService.getUserTopTracks();
-    })
-  }
-
-  user$: Observable<User> = this.authService.user$
-
 }

@@ -6,10 +6,11 @@ import { User } from './models/user';
   providedIn: 'root'
 })
 export class AuthService {
-  private subject = new BehaviorSubject<User>({});
+  private localStorageKey: string = 'token';
+  private subject = new BehaviorSubject<User | undefined>(undefined);
 
   constructor() {
-    const tokenFromStorage = localStorage.getItem('token');
+    const tokenFromStorage = localStorage.getItem(this.localStorageKey);
     if (tokenFromStorage != null) {
       this.subject.next({
         token: tokenFromStorage
@@ -17,12 +18,12 @@ export class AuthService {
     }
   }
 
-  login(fragment: string): any {
+  login(fragment: string): void {
     const params = new URLSearchParams(fragment);
     const token = params.get('access_token');
-    
+
     if (token != null) {
-      localStorage.setItem('token', token);
+      localStorage.setItem(this.localStorageKey, token);
     }
     
     this.subject.next({
@@ -30,5 +31,10 @@ export class AuthService {
     });
   }
 
-  user$: Observable<User> = this.subject.asObservable();
+  logout(): void {
+    localStorage.removeItem(this.localStorageKey);
+    this.subject.next(undefined);
+  }
+
+  user$: Observable<User | undefined> = this.subject.asObservable();
 }
