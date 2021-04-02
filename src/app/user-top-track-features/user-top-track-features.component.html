@@ -1,4 +1,4 @@
 <p>user-top-track-features works!</p>
 
-<p *ngFor="let track of (topTracks$ | async)?.items">{{ track.name }}</p>
+<app-track-info *ngFor="let track of (topTracks$ | async)?.items" [track]="track"></app-track-info>
 <p *ngFor="let feature of (trackFeatures$ | async)?.audio_features">{{ feature.danceability }}</p>

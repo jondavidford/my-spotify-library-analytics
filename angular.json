@@ -129,5 +129,8 @@
       }
     }
   },
-  "defaultProject": "learning-app"
+  "defaultProject": "learning-app",
+  "cli": {
+    "analytics": "1d7363c9-462b-4512-8703-c6a33b990332"
+  }
 }

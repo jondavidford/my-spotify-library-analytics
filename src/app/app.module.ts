@@ -9,12 +9,15 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { MatButtonModule } from '@angular/material/button';
 import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatCardModule } from '@angular/material/card';
 
 import { LoginComponent } from './login/login.component';
 import { HomeComponent } from './home/home.component';
 import { SpotifyCallbackComponent } from './spotify-callback/spotify-callback.component';
 import { httpInterceptorProviders } from './http-interceptors/index';
 import { UserTopTrackFeaturesComponent } from './user-top-track-features/user-top-track-features.component';
+import { TrackInfoComponent } from './track-info/track-info.component';
+import { ConcatArtistsPipe } from './concat-artists.pipe';
 
 @NgModule({
   declarations: [
@@ -23,6 +26,8 @@ import { UserTopTrackFeaturesComponent } from './user-top-track-features/user-to
     HomeComponent,
     SpotifyCallbackComponent,
     UserTopTrackFeaturesComponent,
+    TrackInfoComponent,
+    ConcatArtistsPipe,
   ],
   imports: [
     BrowserModule,
@@ -31,7 +36,8 @@ import { UserTopTrackFeaturesComponent } from './user-top-track-features/user-to
     StoreModule.forRoot({}, {}),
     BrowserAnimationsModule,
     MatButtonModule,
-    MatToolbarModule
+    MatToolbarModule,
+    MatCardModule
   ],
   providers: [httpInterceptorProviders],
   bootstrap: [AppComponent]

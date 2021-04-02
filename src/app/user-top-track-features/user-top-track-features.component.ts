@@ -11,6 +11,7 @@ import { mergeMap } from 'rxjs/operators';
   templateUrl: './user-top-track-features.component.html',
   styleUrls: ['./user-top-track-features.component.scss']
 })
+
 export class UserTopTrackFeaturesComponent implements OnInit {
   topTracks$: Observable<SpotifyApi.UsersTopTracksResponse>;
   trackFeatures$: Observable<SpotifyApi.MultipleAudioFeaturesResponse>;
