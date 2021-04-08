@@ -1,11 +1,11 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
-import { Observable, throwError } from 'rxjs';
-import { catchError, retry, switchMap } from 'rxjs/operators';
+import { Observable, throwError, zip } from 'rxjs';
+import { catchError, retry, switchMap, tap, map } from 'rxjs/operators';
 import { AuthService } from './auth.service';
 import { SpotifyApi } from './models/spotify-api/index';
-import { UserTopTrackFeatures } from './models/userTopTrackFeatures';
+import { TrackObjectFeatures } from './models/trackObjectFeatures';
 
 @Injectable({
   providedIn: 'root'
@@ -23,16 +23,19 @@ export class SpotifyService {
     return this.http.get<SpotifyApi.MultipleAudioFeaturesResponse>(`https://api.spotify.com/v1/audio-features?ids=${commaSeparatedTracks}`);
   }
 
-  // getUserTopTrackFeatures(): Observable<UserTopTrackFeatures> {
-  //   this.getUserTopTracks().pipe(
-  //     switchMap(topTracks => {
-  //       const trackIds = topTracks.items.map(track => track.id);
-  //       topTrackFeatures.trackFeatures$ = this.getMultipleTrackFeatures(trackIds);
-  //     })
-  //   )
-  //   topTrackFeatures.topTracks$.subscribe(topTracks => {
-      
-  //   });
-  //   return topTrackFeatures;
-  // }
+  getUserTopTrackFeatures(): Observable<TrackObjectFeatures[]> {
+    return this.getUserTopTracks().pipe(
+      switchMap(topTracks => {
+        const trackIds = topTracks.items.map(track => track.id);
+        return this.getMultipleTrackFeatures(trackIds).pipe(
+          map((trackFeatures) => {
+            return topTracks.items.map((e, i) => {
+              const trackObjectFeatures: TrackObjectFeatures = { track: e, features: trackFeatures.audio_features[i]};
+              return trackObjectFeatures;
+            });
+          })
+        );
+      })
+    );
+  }
 }

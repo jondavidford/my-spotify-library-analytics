@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { SpotifyApi } from '../models/spotify-api';
+import { TrackObjectFeatures } from '../models/trackObjectFeatures';
 
 @Component({
   selector: 'app-track-info',
@@ -8,7 +9,7 @@ import { SpotifyApi } from '../models/spotify-api';
 })
 export class TrackInfoComponent implements OnInit {
 
-  @Input() track: SpotifyApi.TrackObjectFull;
+  @Input() trackObjectFeatures: TrackObjectFeatures;
 
   constructor() { }
 

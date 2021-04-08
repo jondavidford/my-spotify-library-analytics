@@ -1,9 +1,5 @@
-<p>user-top-track-features works!</p>
-
-<mat-grid-list cols="3" rowHeight="1:1.5">
-    <mat-grid-tile *ngFor="let track of (topTracks$ | async)?.items">
-        <app-track-info [track]="track"></app-track-info>
+<mat-grid-list cols="3" rowHeight="1:1.5" gutterSize="20px">
+    <mat-grid-tile *ngFor="let trackObjectFeatures of (userTopTracksObjectFeatures$ | async)">
+        <app-track-info [trackObjectFeatures]="trackObjectFeatures"></app-track-info>
     </mat-grid-tile>
 </mat-grid-list>
-
-<p *ngFor="let feature of (trackFeatures$ | async)?.audio_features">{{ feature.danceability }}</p>
