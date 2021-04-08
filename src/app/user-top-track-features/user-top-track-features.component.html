@@ -1,4 +1,4 @@
-<mat-grid-list cols="3" rowHeight="1:1.5" gutterSize="20px">
+<mat-grid-list cols="3" rowHeight="1:2.5" gutterSize="20px">
     <mat-grid-tile *ngFor="let trackObjectFeatures of (userTopTracksObjectFeatures$ | async)">
         <app-track-info [trackObjectFeatures]="trackObjectFeatures"></app-track-info>
     </mat-grid-tile>

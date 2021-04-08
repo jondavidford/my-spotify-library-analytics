@@ -2,5 +2,13 @@
     <mat-card-title>{{trackObjectFeatures.track.name}}</mat-card-title>
     <mat-card-subtitle>{{trackObjectFeatures.track.artists | concatArtists}}</mat-card-subtitle>
     <mat-card-content>Tempo: {{trackObjectFeatures.features.tempo}}</mat-card-content>
+    <mat-card-content>Duration (ms): {{trackObjectFeatures.features.duration_ms}}</mat-card-content>
+    <mat-card-content>Key: {{trackObjectFeatures.features.key}}</mat-card-content>
+    <mat-card-content>Mode: {{trackObjectFeatures.features.mode}}</mat-card-content>
+    <mat-card-content>Danceability: {{trackObjectFeatures.features.danceability}}</mat-card-content>
+    <mat-card-content>Acousticness: {{trackObjectFeatures.features.acousticness}}</mat-card-content>
+    <mat-card-content>Instrumentalness: {{trackObjectFeatures.features.instrumentalness}}</mat-card-content>
+    <mat-card-content>Energy: {{trackObjectFeatures.features.energy}}</mat-card-content>
+    <mat-card-content>Liveness: {{trackObjectFeatures.features.liveness}}</mat-card-content>
     <img mat-card-image [src]="trackObjectFeatures.track.album.images[0].url"/>
 </mat-card>
