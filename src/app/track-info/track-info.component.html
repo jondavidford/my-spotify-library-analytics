@@ -2,6 +2,7 @@
     <mat-card-title>{{trackObjectFeatures.track.name}}</mat-card-title>
     <mat-card-subtitle>{{trackObjectFeatures.track.artists | concatArtists}}</mat-card-subtitle>
     <mat-card-content>Tempo: {{trackObjectFeatures.features.tempo}}</mat-card-content>
+    <mat-card-content>Tempo Category: {{categorizeTempo(trackObjectFeatures.features.tempo).name}}</mat-card-content>
     <mat-card-content>Duration (ms): {{trackObjectFeatures.features.duration_ms}}</mat-card-content>
     <mat-card-content>Key: {{trackObjectFeatures.features.key}}</mat-card-content>
     <mat-card-content>Mode: {{trackObjectFeatures.features.mode}}</mat-card-content>

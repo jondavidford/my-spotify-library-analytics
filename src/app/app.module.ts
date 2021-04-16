@@ -11,6 +11,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatCardModule } from '@angular/material/card';
 import { MatGridListModule } from '@angular/material/grid-list';
+import { NgxChartsModule } from '@swimlane/ngx-charts';
 
 import { LoginComponent } from './login/login.component';
 import { HomeComponent } from './home/home.component';
@@ -19,6 +20,7 @@ import { httpInterceptorProviders } from './http-interceptors/index';
 import { UserTopTrackFeaturesComponent } from './user-top-track-features/user-top-track-features.component';
 import { TrackInfoComponent } from './track-info/track-info.component';
 import { ConcatArtistsPipe } from './concat-artists.pipe';
+import { TopTrackAnalyticsComponent } from './user-top-track-features/top-track-analytics/top-track-analytics.component';
 
 @NgModule({
   declarations: [
@@ -29,6 +31,7 @@ import { ConcatArtistsPipe } from './concat-artists.pipe';
     UserTopTrackFeaturesComponent,
     TrackInfoComponent,
     ConcatArtistsPipe,
+    TopTrackAnalyticsComponent,
   ],
   imports: [
     BrowserModule,
@@ -39,7 +42,8 @@ import { ConcatArtistsPipe } from './concat-artists.pipe';
     MatButtonModule,
     MatToolbarModule,
     MatCardModule,
-    MatGridListModule
+    MatGridListModule,
+    NgxChartsModule
   ],
   providers: [httpInterceptorProviders],
   bootstrap: [AppComponent]

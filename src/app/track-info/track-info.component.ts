@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { SpotifyApi } from '../models/spotify-api';
+import { TempoCategory } from '../models/tempo-category';
 import { TrackObjectFeatures } from '../models/trackObjectFeatures';
+import { TempoCategorizationService } from '../tempo-categorization.service';
 
 @Component({
   selector: 'app-track-info',
@@ -11,9 +12,13 @@ export class TrackInfoComponent implements OnInit {
 
   @Input() trackObjectFeatures: TrackObjectFeatures;
 
-  constructor() { }
+  constructor(private _tempoCategorizationService: TempoCategorizationService) { }
 
   ngOnInit(): void {
+  }
+
+  categorizeTempo(tempo: number): TempoCategory {
+    return this._tempoCategorizationService.categorize(tempo);
   }
 
 }
